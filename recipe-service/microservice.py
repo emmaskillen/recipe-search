@@ -2,6 +2,7 @@ import json
 from flask import Flask, jsonify
 import requests
 from requests.auth import HTTPBasicAuth
+from random import randrange
  
 app = Flask(__name__)
 
@@ -23,8 +24,15 @@ def get_parameters():
     recipes = requests.get(url, headers=headers, params=parameter_dict)
     recipes = recipes.json()    # turn into json object
 
+    # if no recipe matches
+    if len(recipes['results']) == 0:
+        return "Sorry no recipe was found, try again"
+    
+    # get random recipe index
+    length = len(recipes['results'])    # base on number of recipes returned
+    irand = randrange(1, length)
 
-    return recipes['results'][0]    # return first recipe
+    return recipes['results'][irand]    # return first recipe
 
 
 if __name__ == "__main__":
