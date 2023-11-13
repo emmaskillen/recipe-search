@@ -27,4 +27,4 @@ In order to **RECEIVE** data from this microservice:
 ***
 
 ## UML Sequence Diagram:
-![image](https://online.visual-paradigm.com/community/share/recipe-search-1k243391t3) 
+![image](UML-diagram.png) 
