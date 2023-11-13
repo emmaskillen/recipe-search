@@ -1,5 +1,5 @@
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import requests
 from requests.auth import HTTPBasicAuth
 from random import randrange
@@ -9,11 +9,11 @@ app = Flask(__name__)
 # This function sends a parameters to microservice.py 
 
 # cuisine, intolerances, diet, includeIngredients, excludeIngredients, type (meal type)
-json_str = '{ "cuisine":"italian", "intolerances": "dairy", "diet":"Vegan", "includeIngredients":"wheat", "excludeIngredients":"butter", "type":"dinner"}'
+#json_str = '{ "cuisine":"italian", "intolerances": "dairy", "diet":"Vegan", "includeIngredients":"wheat", "excludeIngredients":"butter", "type":"dinner"}'
 
 @app.route("/")
 def get_parameters():
-    json_str = '{"cuisine":"italian", "intolerances": "dairy"}'
+    json_str = request.args.get("json_str", "{}")
     parameter_dict = json.loads(json_str)
     
     headers = {
