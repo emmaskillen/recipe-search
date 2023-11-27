@@ -30,7 +30,7 @@ def get_parameters():
     
     # get random recipe index
     length = len(recipes['results'])    # base on number of recipes returned
-    irand = randrange(1, length)
+    irand = randrange(0, length)
 
     return recipes['results'][irand]    # return first recipe
 
